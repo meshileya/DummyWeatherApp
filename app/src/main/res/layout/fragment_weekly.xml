@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dummy.dummyweatherapp.viewmodel.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/coordinator"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:fitsSystemWindows="true"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/toolbar_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    app:toolbarId="@+id/toolbar">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/ic_background"
+                        android:fitsSystemWindows="true"
+                        android:minHeight="100dp"
+                        android:scaleType="centerCrop"
+                        app:layout_collapseMode="parallax" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/menuIv"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_menu"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/notificationsIv"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_marginEnd="15dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_search_magglass"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/headerDscpTv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="60dp"
+                            android:text="New Delhi"
+                            android:textSize="25sp"
+                            app:layout_constraintStart_toStartOf="@id/menuIv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/subHeaderDscpTv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="New Delhi"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="@id/menuIv"
+                            app:layout_constraintTop_toBottomOf="@id/headerDscpTv" />
+
+                        <TextView
+                            android:id="@+id/dscpTv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="New Delhi"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@id/menuIv"
+                            app:layout_constraintTop_toBottomOf="@id/subHeaderDscpTv" />
+
+                        <TextView
+                            android:id="@+id/tempTv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="200dp"
+                            android:text="14c"
+                            android:textSize="40sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@id/menuIv"
+                            app:layout_constraintTop_toBottomOf="@id/subHeaderDscpTv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--                    <androidx.appcompat.widget.Toolbar-->
+                    <!--                        android:id="@+id/detail_toolbar"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="?attr/actionBarSize"-->
+                    <!--                        android:fitsSystemWindows="true"-->
+                    <!--                        app:layout_collapseMode="pin"-->
+                    <!--                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:listitem="@layout/listing_weather" />
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/ProgressStyle"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

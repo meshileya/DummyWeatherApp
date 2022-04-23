@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_weekly"
+    app:startDestination="@id/fragmentWeekly">
+
+    <fragment
+        android:id="@+id/fragmentWeekly"
+        android:name="com.dummy.dummyweatherapp.ui.FragmentWeekly"
+        android:label="FragmentWeekly" />
+</navigation>
